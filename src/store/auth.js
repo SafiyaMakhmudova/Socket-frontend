@@ -6,23 +6,15 @@ import { RT_LOGIN } from '../constants/routes/auth';
 
 export const useAuthStore = defineStore('auth', {
   state: () => {
-    return {
-      user:{},
-      loading: false
-    };
+    
   },
   actions: {
     async login(payload) {
       try {
-        
-        this.loading = true;
         const res = await signin(payload);
         if (res?.status !== 201) {
           return;
         }
-
-        this.loading = false;
-       
         if (res.data.admin.is_admin) {
           router.replace('/list');
           this.saveUser(res?.data);
@@ -31,8 +23,6 @@ export const useAuthStore = defineStore('auth', {
         successToast("Successfully")
       } catch (error) {
         errorToast('Invalid creadentials!');
-      } finally {
-        this.loading = false;
       }
     },
     saveUser(data) {

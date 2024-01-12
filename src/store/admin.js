@@ -25,7 +25,5 @@ export const useAdminStore = defineStore('admin', {
         this.loading = false;
       }
     },
-
-
   }
 })

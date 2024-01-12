@@ -6,7 +6,6 @@ export const useClientStore = defineStore('client', {
   state: () => {
     return {
       client:{},
-      loading: false
     };
   },
   actions: {
@@ -19,8 +18,6 @@ export const useClientStore = defineStore('client', {
         successToast("Successfully")
       } catch (error) {
         errorToast('Invalid creadentials!');
-      } finally {
-        this.loading = false;
       }
     }
     }
