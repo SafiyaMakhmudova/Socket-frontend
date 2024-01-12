@@ -4,16 +4,16 @@ import Login from "./views/Login.vue"
 </script>
 
 <template>
-  <Login/>
-  <AppLayout>
+  <!-- <Login/> -->
+  <!-- <AppLayout>
     <router-view />
   </AppLayout>
   
-</template> -->
+</template> --> 
 
 <script setup>
 import { ref } from 'vue';
-import socket from './socket';
+import {socket} from './socket';
 
 const isJoined = ref(false);
 const join = ref('');

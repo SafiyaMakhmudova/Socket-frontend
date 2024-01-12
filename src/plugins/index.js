@@ -5,9 +5,9 @@
  */
 
 // Plugins
-import pinia from '../store';
-import router from '../router';
+// import pinia from '../store';
+// import router from '../router';
 
-export function registerPlugins(app) {
-  app.use(pinia).use(router);
-}
+// export function registerPlugins(app) {
+//   app.use(pinia).use(router);
+// }
