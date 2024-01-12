@@ -1,20 +1,20 @@
-import {defineStore} from 'pinia';
-
+import { defineStore } from 'pinia';
+import { errorToast } from '../utils/toast'
 import { getClient } from '../api/fetchUrl';
 
-export const useAdminStore  = defineStore('admin',{
-  state: ()=> ({
-    clients:[],
+export const useAdminStore = defineStore('admin', {
+  state: () => ({
+    clients: [],
     loading: false
   }),
-  
+
   actions: {
     async fetchClient() {
       this.loading = true;
       try {
         const res = await getClient()
         console.log(res.data);
-        
+
         if (!res.data?.client && res.status !== 200) {
           return;
         }
@@ -22,14 +22,14 @@ export const useAdminStore  = defineStore('admin',{
         this.loading = false;
         this.clients = res.data;
       } catch (error) {
-        if (error instanceof Error) {
-          return;
-        }
+
+        errorToast(error.message)
+
       } finally {
         this.loading = false;
       }
     },
 
-    
+
   }
 })

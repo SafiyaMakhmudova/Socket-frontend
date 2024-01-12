@@ -1,10 +1,10 @@
 <template>
     <div class="flex">
       <input
-        :v-model="text"
         :type="type"
         :placeholder="placeholder"
         :class="class"
+        :v-model="text"
       />
         <slot />
      </div>
@@ -18,11 +18,9 @@ defineProps({
   },
   text: {
     type: String,
-    default: text,
   },
   placeholder: {
     type: String,
-    default: text,
   },
   class: {
     type: String,

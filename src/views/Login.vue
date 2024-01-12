@@ -2,29 +2,28 @@
   <div class="container">
     <div class="screen">
       <div class="screen__content">
-        <form class="login">
+        <form class="login"  @submit.prevent="onSubmit">
           <div class="login__field">
-            <i class="login__icon fas fa-user"></i>
-            <input type="text" class="login__input" placeholder=" Email"/>
+            <i class='login__icon bx bxs-user'></i>
+            <INPUT
+              type="text"
+              class=" bg-none p-3 pl-6  font-bold w-[75%] border-b-2 border-gray-300  border-solid "
+              placeholder="Email"
+              v-model="email"
+            />
           </div>
           <div class="login__field">
-            <i class="login__icon fas fa-lock"></i>
-            <input
-              type="password"
-              class="login__input"
-              placeholder="Password"
-            />
-<!--             
+            <i class='login__icon  bx bxs-lock-alt'></i>
             <INPUT
               type="password"
-              class="bg-red-500  "
+              class=" bg-none p-3 pl-6  font-bold w-[75%] border-b-2 border-gray-300  border-solid "
               placeholder="Password"
               v-model="password"
-            /> -->
+            />
           </div>
       
           <BUTTON
-            class="mt-8 px-4 bg-blue-500   py-5 rounded-3xl items-center w-[100%] uppercase font-bold border-solid border-2 "
+            class="mt-8 px-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-300 duration-300  bg-white text-purple-800 py-5 rounded-3xl items-center w-[90%] uppercase font-bold border-purple-300  border-solid border-2 "
             icon="fas fa-chevron-right"
             color="#4c489d"
           >
@@ -54,13 +53,24 @@
 </template>
 
 <script setup>
+import { useAuth } from '../composables/auth';
 import BUTTON from '../components/button.vue';
-// import INPUT from '../components/input.vue';
+import INPUT from '../components/input.vue';
 
 import {ref} from "vue"
+const { login } = useAuth();
 
 const email = ref('');
 const password = ref('');
+
+async function onSubmit() {
+  if (!email.value.length && !password.value.length) return;
+
+  await login({
+    email: email.value,
+    password: password.value
+  });
+}
 
 </script>
 

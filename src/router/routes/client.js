@@ -8,6 +8,7 @@ export default [
         name: RT_HOME,
         component: ()=> import('../../views/Home.vue'),
         meta: {
+            requiresAuth: true,
             layout: CLIENT,
             title: MT_HOME
         }
