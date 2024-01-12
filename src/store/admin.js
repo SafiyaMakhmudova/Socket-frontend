@@ -13,18 +13,14 @@ export const useAdminStore = defineStore('admin', {
       this.loading = true;
       try {
         const res = await getClient()
-        console.log(res.data);
 
-        if (!res.data?.client && res.status !== 200) {
+        if (!res.data && res.status !== 200) {
           return;
         }
-
         this.loading = false;
         this.clients = res.data;
       } catch (error) {
-
         errorToast(error.message)
-
       } finally {
         this.loading = false;
       }

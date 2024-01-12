@@ -4,7 +4,7 @@
         :type="type"
         :placeholder="placeholder"
         :class="class"
-        :v-model="text"
+        @input="$emit('update:modelValue', $event.target.value)"
       />
         <slot />
      </div>
@@ -16,14 +16,15 @@ defineProps({
     type: String,
     default: "button",
   },
-  text: {
-    type: String,
-  },
   placeholder: {
     type: String,
   },
   class: {
     type: String,
+  }, 
+  modelValue: {
+    type: String,
+    required: true,
   },
 });
   </script>

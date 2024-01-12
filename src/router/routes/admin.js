@@ -10,6 +10,7 @@ export default [
         name: RT_ADMIN,
         component: Admin,
         meta: {
+            requiresAuth:true,
             layout: ADMIN,
             title: MT_ADMIN
         }

@@ -1,5 +1,5 @@
-const RT_ADMIN = 'Home';
-const MT_ADMIN = 'Home';
+const RT_ADMIN = 'List';
+const MT_ADMIN = 'List';
 
 export {
  RT_ADMIN,

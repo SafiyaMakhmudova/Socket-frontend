@@ -12,14 +12,10 @@ export const useClientStore = defineStore('client', {
   actions: {
     async createClient(payload) {
       try {
-        this.loading = true;
         const res = await addNewClient(payload);
-        if (res?.data?.status !== 200) {
+        if (res?.status != 201) {
           return;
         }
-        console.log(res.data);
-        this.loading = false;
-
         successToast("Successfully")
       } catch (error) {
         errorToast('Invalid creadentials!');

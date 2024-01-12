@@ -2,7 +2,7 @@
   <div class="container">
     <div class="screen">
       <div class="screen__content">
-        <form class="login"  @submit.prevent="onSubmit">
+        <form class="login"   >
           <div class="login__field">
             <i class='login__icon bx bxs-user'></i>
             <INPUT
@@ -25,7 +25,7 @@
           <BUTTON
             class="mt-8 px-4 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-300 duration-300  bg-white text-purple-800 py-5 rounded-3xl items-center w-[90%] uppercase font-bold border-purple-300  border-solid border-2 "
             icon="fas fa-chevron-right"
-            color="#4c489d"
+            color="#4c489d" @click.prevent="onSubmit"
           >
             Log in Now
           </BUTTON>				
@@ -53,7 +53,7 @@
 </template>
 
 <script setup>
-import { useAuth } from '../composables/auth';
+import  {useAuth}  from '../composables/auth';
 import BUTTON from '../components/button.vue';
 import INPUT from '../components/input.vue';
 
@@ -64,11 +64,14 @@ const email = ref('');
 const password = ref('');
 
 async function onSubmit() {
-  if (!email.value.length && !password.value.length) return;
+  if (!email.value && !password.value) {
+    return
+  }
 
   await login({
     email: email.value,
     password: password.value
+    
   });
 }
 
