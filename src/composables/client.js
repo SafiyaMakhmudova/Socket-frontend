@@ -10,7 +10,7 @@ export const useClient = () => {
   const yes = ref('false')
   const no = ref('true')
 
-  const { loading , client} = storeToRefs(store);
+  const {client} = storeToRefs(store);
   const { createClient } = useClientStore();
 
   function iconBtn() {
@@ -28,7 +28,6 @@ export const useClient = () => {
 
   return {
     createClient,
-    loading,
     route,
     router,
     client,
